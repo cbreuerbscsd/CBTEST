@@ -474,40 +474,48 @@ class tinyDOC
 			}
 		}
 
-	save()
-		{
-		try
-			{
-      // Get the textbox content
-      var textboxContent = this.document.innerHTML;
+    async save() {
+      try {
+        // Request persistent file system access
+        const fs = await window.showSaveFilePicker();
 
-      // Create a Blob with the text content
-      var blob = new Blob([textboxContent], { type: "text/plain" });
+        // Create a new FileWriter
+        const writable = await fs.createWritable();
 
-      // Create a link element
-      var link = document.createElement("a");
+        // Get the textbox content
+        const textboxContent = this.document.innerHTML;
 
-      // Set the link's href attribute to the Blob's URL
-      link.href = URL.createObjectURL(blob);
+        // Write the content to the file
+        await writable.write(textboxContent);
 
-      // Set the download attribute to specify the filename
-      var currentDate = new Date();
-      var filename = "textbox_content_" + currentDate.toISOString().replace(/:/g, "_") + ".txt";
-      link.download = filename;
+        // Close the file writer
+        await writable.close();
 
-      // Append the link to the document
-      document.body.appendChild(link);
+        console.log('File saved successfully!');
+      } catch (error) {
+        console.error('Error saving file:', error);
+      }
+    }
 
-      // Trigger a click on the link to start the download
-      link.click();
+    async openFile() {
+      try {
+        // Request file system access to open a file
+        const fileHandle = await window.showOpenFilePicker();
 
-      // Remove the link from the document
-      document.body.removeChild(link);
-			}
-			catch(err)
-			{
-			}
-		}
+        // Create a File object from the file handle
+        const file = await fileHandle.getFile();
+
+        // Read the content of the file
+        const content = await file.text();
+
+        // Set the textarea content to the read content
+        this.document.innerHTML = content;
+
+        console.log('File opened successfully!');
+      } catch (error) {
+        console.error('Error opening file:', error);
+      }
+    }
 
 	resize()
 		{
