@@ -48,7 +48,7 @@ class tinyDOC
 			this.menu.appendChild(this.holder1);
 			this.buttonSave = document.createElement("div");
 			this.buttonSave.className = "tinydoc_button_save";
-			//this.holder1.appendChild(this.buttonSave);
+			this.holder1.appendChild(this.buttonSave);
 
 			// ADDING A SEPARATOR
 			//this.separator1 = document.createElement("div");
@@ -263,7 +263,7 @@ class tinyDOC
 		if (saveFunction)
 			{
 			// SETTING WHAT WILL HAPPEN WHEN THE USER CLICKS ON THE SAVE BUTTON
-			this.buttonSave.addEventListener("mousedown",function(event){thisTinyDOC.save();event.preventDefault()});
+			this.buttonSave.addEventListener("mousedown",function(event){thisTinyDOC.save()});
 			}
 
 		// SETTING WHAT WILL HAPPEN WHEN THE USER CLICKS ON A MENU BUTTON
@@ -478,7 +478,31 @@ class tinyDOC
 		{
 		try
 			{
-			this.saveFunction();
+      // Get the textbox content
+      var textboxContent = this.document.innerHTML;
+
+      // Create a Blob with the text content
+      var blob = new Blob([textboxContent], { type: "text/plain" });
+
+      // Create a link element
+      var link = document.createElement("a");
+
+      // Set the link's href attribute to the Blob's URL
+      link.href = URL.createObjectURL(blob);
+
+      // Set the download attribute to specify the filename
+      var currentDate = new Date();
+      var filename = "textbox_content_" + currentDate.toISOString().replace(/:/g, "_") + ".txt";
+      link.download = filename;
+
+      // Append the link to the document
+      document.body.appendChild(link);
+
+      // Trigger a click on the link to start the download
+      link.click();
+
+      // Remove the link from the document
+      document.body.removeChild(link);
 			}
 			catch(err)
 			{
