@@ -1,6 +1,6 @@
 {
-	"name": "TinyDOC Editor",
-	"short_name": "TinyDOC Editor",
+	"name": "Word-Processing",
+	"short_name": "Word-Processing",
 	"lang": "en-US",
 	"start_url": "https://lrusso.github.io/tinyDOC/tinyDOC.htm",
 	"display": "standalone",
