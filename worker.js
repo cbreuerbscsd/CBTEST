@@ -9,7 +9,7 @@ const filesToCache = [
 	"tinyDOCShare.png"
 ];
 
-const staticCacheName = "tinydoc-v1";
+const staticCacheName = "Word-Processing-v1";
 
 self.addEventListener("install", event => {
 	event.waitUntil(
