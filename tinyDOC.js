@@ -526,30 +526,20 @@ class tinyDOC
 
 async open() {
   try {
-    // Request file system access to open a file
-    const [fileHandle] = await window.showOpenFilePicker();
+    const fs = await window.showOpenFilePicker();
 
-    // Get the file as a File object
-    const file = await fileHandle.getFile();
+    // You can use the fileHandle to read or manipulate the selected file
 
-    // Create a new FileReader
-    const reader = new FileReader();
+    // Example: Reading file content
+    const file = await fs.getFile();
+    const content = await file.text();
+    this.document.innerHTML = content;
 
-    // Set up the onload event handler to handle the file content
-    reader.onload = async (event) => {
-      try {
-        // Get the content of the file
-        const fileContent = event.target.result;
-
-        // Process the file content as needed
-        // For example, you can set it to a textbox
-        this.document.innerHTML = fileContent;
-
-        console.log('File opened successfully!');
-      } catch (error) {
-        console.error('Error processing file content:', error);
-      }
-    };
+    console.log("Selected file content:", content);
+  } catch (err) {
+    console.error("Error selecting file:", err);
+  }
+}
 
     // Read the content of the file
     reader.readAsText(file);
