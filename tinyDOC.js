@@ -228,7 +228,7 @@ class tinyDOC
 		this.menu.appendChild(this.holder17);
 		this.buttonClear = document.createElement("div");
 		this.buttonClear.className = "tinydoc_button_clear";
-		this.holder17.appendChild(this.buttonClear);
+		//this.holder17.appendChild(this.buttonClear);
 
 		// ADDING A SEPARATOR
 		this.separator8 = document.createElement("div");
