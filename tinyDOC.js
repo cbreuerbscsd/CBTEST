@@ -524,22 +524,39 @@ class tinyDOC
       }
     }
 
-    async open() {
+async open() {
+  try {
+    // Request file system access to open a file
+    const [fileHandle] = await window.showOpenFilePicker();
+
+    // Get the file as a File object
+    const file = await fileHandle.getFile();
+
+    // Create a new FileReader
+    const reader = new FileReader();
+
+    // Set up the onload event handler to handle the file content
+    reader.onload = async (event) => {
       try {
-        // Request file system access to open a file
-        const file = await fileHandle.getFile();
+        // Get the content of the file
+        const fileContent = event.target.result;
 
-        // Read the content of the file
-        const content = await file.text();
-
-        // Set the textarea content to the read content
-        this.document.innerHTML = content;
+        // Process the file content as needed
+        // For example, you can set it to a textbox
+        this.document.innerHTML = fileContent;
 
         console.log('File opened successfully!');
       } catch (error) {
-        console.error('Error opening file:', error);
+        console.error('Error processing file content:', error);
       }
-    }
+    };
+
+    // Read the content of the file
+    reader.readAsText(file);
+  } catch (error) {
+    console.error('Error opening file:', error);
+  }
+}
 
 	resize()
 		{
