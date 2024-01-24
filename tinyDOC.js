@@ -1,6 +1,6 @@
 class tinyDOC
 	{
-	constructor(myContainer, documentText, saveFunction, template1, template2, template3)
+	constructor(myContainer, documentText, saveFunction, openFunction, template1, template2, template3)
 		{
 		// SETTING THE TINYDOC CONTAINER
 		this.myContainer = myContainer;
@@ -10,6 +10,13 @@ class tinyDOC
 			{
 			// SETTING THE SAVE FUNCTION
 			this.saveFunction = saveFunction;
+			}
+
+		// CHECKING IF THERE IS A OPEN FUNCTION
+		if (openFunction)
+			{
+			// SETTING THE SAVE FUNCTION
+			this.openFunction = openFunction;
 			}
 
 		// SETTING ALL THE TEMPLATES (IF ANY)
