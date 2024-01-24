@@ -513,23 +513,18 @@ class tinyDOC
 
 async open() {
   try {
-    const fs1 = await window.showOpenFilePicker();
+    const [fileHandle] = await window.showOpenFilePicker();
 
     // You can use the fileHandle to read or manipulate the selected file
 
     // Example: Reading file content
-    const file1 = await fs1.getFile();
-    const content = await file1.text();
+    const file = await fileHandle.getFile();
+    const content = await file.text();
     this.document.innerHTML = content;
 
     console.log("Selected file content:", content);
   } catch (err) {
     console.error("Error selecting file:", err);
-  }
-}
-		
-  } catch (error) {
-    console.error('Error opening file:', error);
   }
 }
 
