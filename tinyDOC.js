@@ -278,7 +278,7 @@ class tinyDOC
 
 
 		// SETTING WHAT WILL HAPPEN WHEN THE USER CLICKS ON A MENU BUTTON
-		this.buttonPrint.addEventListener("mousedown",function(event){(async()=>{await thisTinyDOC.open();event.preventDefault()})()});
+		this.buttonOpen.addEventListener("mousedown",function(event){thisTinyDOC.open();event.preventDefault()});
 		this.buttonPrint.addEventListener("mousedown",function(event){thisTinyDOC.print();event.preventDefault()});
 		this.buttonUndo.addEventListener("mousedown",function(event){thisTinyDOC.formatDoc("undo",null);event.preventDefault()});
 		this.buttonRedo.addEventListener("mousedown",function(event){thisTinyDOC.formatDoc("redo",null);event.preventDefault()});
