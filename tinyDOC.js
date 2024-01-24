@@ -278,7 +278,7 @@ class tinyDOC
 
 
 		// SETTING WHAT WILL HAPPEN WHEN THE USER CLICKS ON A MENU BUTTON
-		this.buttonOpen.addEventListener("mousedown",function(event){thisTinyDOC.open()});
+		this.buttonOpen.addEventListener("mousedown",function(event){thisTinyDOC.open();event.preventDefault()});
 		this.buttonPrint.addEventListener("mousedown",function(event){thisTinyDOC.print();event.preventDefault()});
 		this.buttonUndo.addEventListener("mousedown",function(event){thisTinyDOC.formatDoc("undo",null);event.preventDefault()});
 		this.buttonRedo.addEventListener("mousedown",function(event){thisTinyDOC.formatDoc("redo",null);event.preventDefault()});
@@ -356,19 +356,6 @@ class tinyDOC
 								}
 							}
 						}
-					else if (event.ctrlKey || event.metaKey)
-							{
-							switch (String.fromCharCode(event.which).toLowerCase())
-								{
-								case "o":
-								// CANCELING THE SAVING PAGE KEY EVENT
-								event.preventDefault();
-
-								// SAVING THE DOCUMENT
-								thisTinyDOC.open();
-								break;
-								}
-							}
 					}
 				}
 				catch(err)
