@@ -64,7 +64,7 @@ class tinyDOC
 		this.menu.appendChild(this.holder25);
 		this.buttonOpen = document.createElement("div");
 		this.buttonOpen.className = "tinydoc_button_open";
-		this.holder25.appendChild(this.buttonOpen);
+		//this.holder25.appendChild(this.buttonOpen);
 
 		// ADDING THE PRINT BUTTON
 		this.holder2 = document.createElement("div");
