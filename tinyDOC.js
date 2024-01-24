@@ -1,6 +1,6 @@
 class tinyDOC
 	{
-	constructor(myContainer, documentText, saveFunction, openFunction, template1, template2, template3)
+	constructor(myContainer, documentText, saveFunction, template1, template2, template3)
 		{
 		// SETTING THE TINYDOC CONTAINER
 		this.myContainer = myContainer;
@@ -12,12 +12,6 @@ class tinyDOC
 			this.saveFunction = saveFunction;
 			}
 
-		// CHECKING IF THERE IS A OPEN FUNCTION
-		if (openFunction)
-			{
-			// SETTING THE OPEN FUNCTION
-			this.openFunction = openFunction;
-			}
 
 		// SETTING ALL THE TEMPLATES (IF ANY)
 		this.template1 = template1;
@@ -63,21 +57,14 @@ class tinyDOC
 			this.menu.appendChild(this.separator1);
 			}
 
-		if (openFunction)
-			{
-			// ADDING THE OPEN BUTTON
-			this.holder25 = document.createElement("div");
-			this.holder25.className = "tinydoc_holder";
-			this.menu.appendChild(this.holder25);
-			this.buttonOpen = document.createElement("div");
-			this.buttonOpen.className = "tinydoc_button_open";
-			this.holder25.appendChild(this.buttonOpen);
 
-			// ADDING A SEPARATOR
-			this.separator1 = document.createElement("div");
-			this.separator1.className = "tinydoc_separator";
-			this.menu.appendChild(this.separator1);
-			}
+		// ADDING THE OPEN BUTTON
+		this.holder25 = document.createElement("div");
+		this.holder25.className = "tinydoc_holder";
+		this.menu.appendChild(this.holder25);
+		this.buttonOpen = document.createElement("div");
+		this.buttonOpen.className = "tinydoc_button_open";
+		this.holder25.appendChild(this.buttonOpen);
 
 		// ADDING THE PRINT BUTTON
 		this.holder2 = document.createElement("div");
@@ -289,15 +276,9 @@ class tinyDOC
 			this.buttonSave.addEventListener("mousedown",function(event){thisTinyDOC.save()});
 			}
 
-		// CHECKING IF THERE IS A OPEN FUNCTION
-		if (openFunction)
-			{
-			// SETTING WHAT WILL HAPPEN WHEN THE USER CLICKS ON THE SAVE BUTTON
-			this.buttonOpen.addEventListener("mousedown",function(event){thisTinyDOC.open()});
-			}
-
 
 		// SETTING WHAT WILL HAPPEN WHEN THE USER CLICKS ON A MENU BUTTON
+		this.buttonPrint.addEventListener("mousedown",function(event){thisTinyDOC.open();event.preventDefault()});
 		this.buttonPrint.addEventListener("mousedown",function(event){thisTinyDOC.print();event.preventDefault()});
 		this.buttonUndo.addEventListener("mousedown",function(event){thisTinyDOC.formatDoc("undo",null);event.preventDefault()});
 		this.buttonRedo.addEventListener("mousedown",function(event){thisTinyDOC.formatDoc("redo",null);event.preventDefault()});
