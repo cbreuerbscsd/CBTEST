@@ -347,7 +347,7 @@ class tinyDOC
 					else if (event.ctrlKey || event.metaKey)
 						{
 						// CHECKING IF THERE IS A SAVE FUNCTION
-						if (thisTinyDOC.saveFunction)
+						if (thisTinyDOC.openFunction)
 							{
 							switch (String.fromCharCode(event.which).toLowerCase())
 								{
@@ -516,7 +516,7 @@ class tinyDOC
       }
     }
 
-    async openFile() {
+    async open() {
       try {
         // Request file system access to open a file
         const fileHandle = await window.showOpenFilePicker();
