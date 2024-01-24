@@ -279,7 +279,7 @@ class tinyDOC
 		this.buttonHighlight.addEventListener("mousedown",function(event){thisTinyDOC.formatDoc("BackColor","#FFFF00");event.preventDefault()});
 		//this.buttonLink.addEventListener("mousedown",function(event){thisTinyDOC.insertLink();event.preventDefault()});
 		//this.buttonCalc.addEventListener("mousedown",function(event){thisTinyDOC.insertCalc();event.preventDefault()});
-		this.buttonClear.addEventListener("mousedown",function(event){thisTinyDOC.formatDoc("removeFormat",null);event.preventDefault()});
+		//this.buttonClear.addEventListener("mousedown",function(event){thisTinyDOC.formatDoc("removeFormat",null);event.preventDefault()});
 
 		// CHECKING IF THERE IS A TEMPLATE 1
 		//if (template1)
