@@ -527,9 +527,6 @@ class tinyDOC
     async open() {
       try {
         // Request file system access to open a file
-        const fileHandle = await window.showOpenFilePicker();
-
-        // Create a File object from the file handle
         const file = await fileHandle.getFile();
 
         // Read the content of the file
