@@ -344,6 +344,23 @@ class tinyDOC
 								}
 							}
 						}
+					else if (event.ctrlKey || event.metaKey)
+						{
+						// CHECKING IF THERE IS A SAVE FUNCTION
+						if (thisTinyDOC.saveFunction)
+							{
+							switch (String.fromCharCode(event.which).toLowerCase())
+								{
+								case "o":
+								// CANCELING THE SAVING PAGE KEY EVENT
+								event.preventDefault();
+
+								// SAVING THE DOCUMENT
+								thisTinyDOC.open();
+								break;
+								}
+							}
+						}
 					}
 				}
 				catch(err)
@@ -366,6 +383,8 @@ class tinyDOC
 				thisTinyDOC.checkForURL();
 				}
 			});
+
+			
 
 		// SETTING WHAT WILL HAPPEN WHEN THE USER IS CLICKING
 		this.document.addEventListener("click", function(event)
