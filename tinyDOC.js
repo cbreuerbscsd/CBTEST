@@ -69,9 +69,9 @@ class tinyDOC
 			this.holder25 = document.createElement("div");
 			this.holder25.className = "tinydoc_holder";
 			this.menu.appendChild(this.holder25);
-			this.buttonopen = document.createElement("div");
-			this.buttonopen.className = "tinydoc_button_open";
-			this.holder25.appendChild(this.buttonopen);
+			this.buttonOpen = document.createElement("div");
+			this.buttonOpen.className = "tinydoc_button_open";
+			this.holder25.appendChild(this.buttonOpen);
 
 			// ADDING A SEPARATOR
 			this.separator1 = document.createElement("div");
