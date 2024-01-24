@@ -273,6 +273,14 @@ class tinyDOC
 			this.buttonSave.addEventListener("mousedown",function(event){thisTinyDOC.save()});
 			}
 
+		// CHECKING IF THERE IS A OPEN FUNCTION
+		if (openFunction)
+			{
+			// SETTING WHAT WILL HAPPEN WHEN THE USER CLICKS ON THE SAVE BUTTON
+			this.buttonOpen.addEventListener("mousedown",function(event){thisTinyDOC.open()});
+			}
+
+
 		// SETTING WHAT WILL HAPPEN WHEN THE USER CLICKS ON A MENU BUTTON
 		this.buttonPrint.addEventListener("mousedown",function(event){thisTinyDOC.print();event.preventDefault()});
 		this.buttonUndo.addEventListener("mousedown",function(event){thisTinyDOC.formatDoc("undo",null);event.preventDefault()});
