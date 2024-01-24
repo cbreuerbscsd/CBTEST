@@ -488,28 +488,36 @@ class tinyDOC
 			}
 		}
 
-    async save() {
-      try {
-        // Request persistent file system access
-        const fs = await window.showSaveFilePicker();
+async save() {
+  try {
+    // Request persistent file system access
+    const fs = await window.showSaveFilePicker({
+      suggestedName: 'test.html',
+      types: [{
+        description: 'HTML Files',
+        accept: {
+          'text/html': ['.html'],
+        },
+      }],
+    });
 
-        // Create a new FileWriter
-        const writable = await fs.createWritable();
+    // Create a new FileWriter
+    const writable = await fs.createWritable();
 
-        // Get the textbox content
-        const textboxContent = this.document.innerHTML;
+    // Get the textbox content
+    const textboxContent = this.document.innerHTML;
 
-        // Write the content to the file
-        await writable.write(textboxContent);
+    // Write the content to the file
+    await writable.write(textboxContent);
 
-        // Close the file writer
-        await writable.close();
+    // Close the file writer
+    await writable.close();
 
-        console.log('File saved successfully!');
-      } catch (error) {
-        console.error('Error saving file:', error);
-      }
-    }
+    console.log('File saved successfully!');
+  } catch (error) {
+    console.error('Error saving file:', error);
+  }
+}
 
 async open() {
   try {
